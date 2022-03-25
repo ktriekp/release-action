@@ -8,17 +8,18 @@ on:
       - "rc-*"
 
 # Automatically create a GitHub Release, with release details specified (the relevant commits)
-jobs:
+jobs:      
   release:
     name: "Release"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: ${GITHUB_REF##*/}
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/} 
       - name: Release name
         run: echo release ${GITHUB_REFrc##*/}
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: "${GITHUB_REF##*/}"
+
