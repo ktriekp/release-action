@@ -19,4 +19,6 @@ jobs:
           prerelease: false
           automatic_release_tag: ${GITHUB_REF##*/}
       - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/} && echo release ${GITHUB_REFrc##*/}
+        run: echo running on branch ${GITHUB_REF##*/} 
+      - name: Release name
+        run: echo release ${GITHUB_REFrc##*/}
